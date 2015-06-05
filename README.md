@@ -6,7 +6,7 @@ This is a [Packer](http://packer.io/) post-processor plugin which allows setting
 
 Normally, Docker images built using Packer cannot include user, environment variables and other metadata that is available in Dockerfiles.
 
-This plugin will automatically create a temporary Dockerfile and run `docker build` in an annonymous context. Most Dockerfile instructions are supported as json parameters, note that `RUN`, `ADD`, `COPY`, `ONBUILD` etc. are not supported because packer provisioners should be used for these features.
+This plugin will automatically create a temporary Dockerfile and run `docker build` in an annonymous context. Most Dockerfile instructions are supported as json parameters, note that `RUN`, `ADD`, `COPY`, and `ONBUILD` are not supported because packer provisioners should be used for their functionality.
 
 ## Usage
 
@@ -18,12 +18,12 @@ In your packer template, configure the post processor:
         "type": "docker-dockerfile",
         "maintainer": "James G. Kim <jgkim@jayg.org>",
         "cmd": ["-v"],
-        "label" {
-          "version": "1.0",
+        "label": {
+          "version": "1.0"
         },
         "expose": [8080],
         "env": {
-          "NAME": "James G. Kim",
+          "NAME": "James G. Kim"
         },
         "entrypoint": ["/bin/bash"],
         "user": "jgkim",
