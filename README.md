@@ -13,6 +13,7 @@ This plugin will automatically create a temporary Dockerfile and run `docker bui
 In your packer template, configure the post processor:
 
     {
+      ...
       "post-processors": [{
         "type": "docker-dockerfile",
         "maintainer": "James G. Kim <jgkim@jayg.org>",
@@ -28,6 +29,7 @@ In your packer template, configure the post processor:
         "user": "jgkim",
         "volume": ["/home/jgkim"]
       }]
+      ...
     }
 
 Values can include user variables and other Packer functions as documented on the [Packer manual](https://packer.io/docs/templates/user-variables.html).
@@ -37,7 +39,7 @@ Values can include user variables and other Packer functions as documented on th
 Please note that if you are using the `docker-tag` post processor to tag the resulting artifact of this post processor then you must put both post processor on the same chain:
 
     {
-    ...
+      ...
       "post-processors": [
         [{
             "type": "docker-dockerfile",
@@ -49,7 +51,7 @@ Please note that if you are using the `docker-tag` post processor to tag the res
             "tag": "latest"
         }]
       ]
-    ...
+      ...
     }
 
 ## Building
