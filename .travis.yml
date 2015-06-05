@@ -1,10 +1,14 @@
+sudo: false
+
 language: go
+
 go:
-  - 1.3
+  - 1.4
 
-install:
-  - go get github.com/nitrous-io/goop
-  - go build github.com/nitrous-io/goop
-  - goop install
+install: go get -d ./...
 
-script: goop go test -v
+script: go test ./...
+
+branches:
+  only:
+    - master
