@@ -9,6 +9,7 @@ import (
 	"reflect"
 	"strings"
 	"text/template"
+	"unicode/utf8"
 
 	"github.com/mitchellh/packer/builder/docker"
 	"github.com/mitchellh/packer/common"
@@ -67,6 +68,13 @@ func (p *PostProcessor) PostProcess(ui packer.Ui, artifact packer.Artifact) (pac
 	}
 
 	p.config.From = artifact.Id()
+
+	// Removing runes to workaround this issue:
+	// https://github.com/docker/docker/issues/16218
+	if utf8.RuneCountInString(p.config.From) == 64 {
+		_, size := utf8.DecodeLastRuneInString(p.config.From)
+		p.config.From = p.config.From[:len(p.config.From)-size]
+	}
 
 	template_str := `FROM {{ .From }}
 {{ if .Maintainer }}MAINTAINER {{ .Maintainer }}
