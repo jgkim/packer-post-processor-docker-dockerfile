@@ -71,7 +71,7 @@ Put the binary `packer-post-processor-docker-dockerfile` into the `bin` director
 
 ## Acknowledgement
 
-This plugin has rewritten from scratch, but still heavily based on [Avishai Ish-Shalom](https://github.com/avishai-ish-shalom)'s [original work](https://github.com/avishai-ish-shalom/packer-post-processor-docker-dockerfile).
+This plugin has been rewritten from scratch, but still heavily based on [Avishai Ish-Shalom](https://github.com/avishai-ish-shalom)'s [original work](https://github.com/avishai-ish-shalom/packer-post-processor-docker-dockerfile).
 
 ## License
 
